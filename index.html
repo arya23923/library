@@ -12,13 +12,22 @@
     <div class="header">
         <img src="images/bookstore elements.png" alt="header" class="header-image">
     </div>
-    <dialog>
-        <div class="name"></div>
-        <div class="author"></div>
-        <div class="year"></div>
-        <div class="stars"></div>
-    </dialog>
-    <button type="button">Add books</button>
+    <dialog id="dialog">
+        <form action="#" method="dialog">
+            <label for="Name">Name: </label>
+            <input type="text" required id="name">
+            <label for="author">Author: </label>
+            <input type="text" required id="author">
+            <label for="year">Year: </label>
+            <input type="text" required id="year"> 
+            <label for="rating">Rating: </label>
+            <input type="number" required>
+            <button type="submit" id="close">submit</button>
+        </form>
+    </dialog> 
+    <button type="button" id="Add">Add books</button>
+
+    <div class="book-header">❤️Books❤️</div>
 
     
     <div class="book-section">
@@ -34,7 +43,8 @@
                 <span class="fa fa-star checked"></span>
             </div>
             <div class="bottom-row">
-                <div class="book"><img src="images/read.svg" alt="" height="50px" width="30px"></div>
+                <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
+                <div class="text">Read</div>
                 <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
              </div>  
         </div>
@@ -51,7 +61,8 @@
                 <span class="fa fa-star"></span>
             </div>
             <div class="bottom-row">
-               <div class="book"><img src="images/read.svg" alt="" height="50px" width="30px"></div>
+               <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
+               <div class="text">Read</div>
                <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
             </div>  
         </div>
@@ -68,7 +79,8 @@
                 <span class="fa fa-star"></span>
             </div>
             <div class="bottom-row">
-                <div class="book"><img src="images/read.svg" alt="" height="50px" width="30px"></div>
+                <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
+                <div class="text">Read</div>
                 <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
              </div>  
         </div>
@@ -85,7 +97,8 @@
                 <span class="fa fa-star checked"></span>
             </div>
             <div class="bottom-row">
-                <div class="book"><img src="images/read.svg" alt="" height="50px" width="30px"></div>
+                <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
+                <div class="text">Read</div>
                 <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
              </div>  
         </div>
@@ -102,7 +115,10 @@
                 <span class="fa fa-star checked"></span>
             </div>
             <div class="bottom-row">
-                <div class="book"><img src="images/read.svg" alt="" height="50px" width="30px"></div>
+                <div class="book">
+                    <img src="images/read.svg" alt="" id="book" height="50px" width="30px">
+                </div>
+                <div class="text">Read</div>
                 <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
              </div>  
         </div>

@@ -24,7 +24,7 @@
 button {
     position: absolute;
     padding: 1%;
-    margin-top: -10vh;
+    margin-top: -7vh;
     margin-left: 18vw;
     width: 10vw;
     background-color: rgb(227, 152, 86);
@@ -36,6 +36,18 @@ button {
     min-height: 50px;
 }
 
+.book-header{
+    font-size: 2rem;
+    padding: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(227, 152, 86);
+    width: 100vw;
+    margin-top: 10vh;
+    height: 0.5vh;
+}
+
 .book-section{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
@@ -45,6 +57,8 @@ button {
     align-content: center;
     margin-top: 5vh;
     margin-left: -3vw; 
+    width: 100vw;
+    /* padding: 3%; */
     /* background-color: beige; */
 }
 
@@ -56,21 +70,20 @@ button {
     flex-direction: column;
     padding: 5%; 
     /* background-color: white; */
-    width: 20vw;
+    width: 18vw;
     height: 25vh;
     margin: 2%;
     margin-left: 5vw;
     border: 1px solid rgb(233, 230, 229); 
     border-radius: 6px;
-    backdrop-filter: blur(0.75);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     padding: 30px 20px;
-    min-width: 200px;
-    min-height: 220px;
+    min-width: 250px;
+    min-height: 250px;
 }
 
 .card-heading{
@@ -99,18 +112,50 @@ button {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-self: flex-end;
     width: 17vw;
+    height: 10vh;
     padding: 5%;
 } 
 
 .trash{
     cursor: pointer;
+    padding: 2%;
 }
 
 .book{
     cursor: pointer;
+    padding: 1%;
 }
+
+.book:hover{
+    background-color: palegoldenrod;
+}
+
+.trash:hover{
+    background-color: palegoldenrod;
+}
+
+.text{
+    padding: 10%;
+    color: grey;
+}
+
+dialog[open]{
+    opacity: 1;
+    height: 60vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur;
+}
+
+dialog{
+    opacity: 0;
+}
+
+
 
 
   
