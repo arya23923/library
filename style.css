@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 * {
     margin: 0;
@@ -8,7 +8,7 @@
 }
 
 .header{
-    /* min-width: 100px; */
+    /* min-width: 2000px; */
     padding: 0;
     width: 100vw;
     margin: -3vh;
@@ -20,6 +20,18 @@
     width: 100vw;
     /* margin-right: -5vw; */
 } 
+
+.header-text{
+    position: absolute;
+    margin-top: -33vh;
+    width: 18vw;
+    margin-left: 15vw;
+    font-size: 1.5vw;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: regular 400;
+    font-style: normal;
+}
 
 button {
     position: absolute;
@@ -142,8 +154,8 @@ button {
 
 dialog[open]{
     opacity: 1;
-    height: 60vh;
-    width: 40vw;
+    height: 70vh;
+    width: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
