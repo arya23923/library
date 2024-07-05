@@ -37,31 +37,6 @@ const library = [
     }
 ]
 
-let book_section = document.querySelector(".book-section");
-    book_section.innerHTML = "";
-    for(let i = 0; i < library.length; i++)
-    {
-        let book = library[i];
-        let bookEl = document.createElement("div");
-        bookEl.innerHTML = `<div class="card">
-        <div class="card-heading">${book.title}</div>
-        <div class="card-writer">${book.author}</div>
-        <div class="page">${book.pages} pages</div>
-        <div class="rating">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-        </div>
-        <div class="bottom-row">
-            <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
-            <div class="text">${book.read ? "Read":"Not read"}</div>
-            <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
-         </div>  
-    </div>`
-        book_section.appendChild(bookEl);
-    }
 
 
 function Book(title,author,pages,rating,read){
@@ -70,6 +45,15 @@ function Book(title,author,pages,rating,read){
     this.pages = pages;
     this.rating = rating;
     this.read = read;
+}
+
+Book.prototype.toggleRead = function() {
+    this.read = !this.read;
+}
+
+function toggleRead(index){
+    library[index].toggleRead();
+    display();
 }
 
 function display(){
@@ -91,9 +75,9 @@ function display(){
                 <span class="fa fa-star checked"></span>
         </div>
         <div class="bottom-row">
-            <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
+            <div class="book" onclick = "toggleRead(${i})"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
             <div class="text">${book.read ? "Read":"Not read"}</div>
-            <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
+            <div class="trash" onclick = "removeBook(${i})"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
          </div>  
     </div>`
         book_section.appendChild(bookEl);
@@ -112,12 +96,25 @@ function addBookToLibrary(){
     display();
 }
 
+function removeBook(index){
+    console.log(index);
+    library.splice(index,1);
+    display();
+}
+
+function toggleRead(index){
+    library[index].read = "not read";
+    display();
+}
+
+display();
 
 const add = document.getElementById('Add');
 const dialog = document.getElementById('dialog');
 const close = document.getElementById('close');
 const trash = document.querySelectorAll(".trash");
-const to_read = document.querySelector(".book")
+console.log(trash);
+const to_read = document.querySelectorAll(".book")
 
 add.addEventListener("click", ()=>{
     dialog.showModal();
@@ -130,8 +127,9 @@ close.addEventListener("click", (event)=> {
     
 });
 
-trash.addEventListener("click", ()=> {
+// trash.forEach((element,index) =>{
+//     element.addEventListener("click",removeBook(index));
+// })
 
-})
 
 
