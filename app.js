@@ -1,53 +1,106 @@
-// const library = [
-//     {
-//         title: 'The Kite Runner',
-//         author: 'Khaled Hosseini',
-//         pages: 371,
-//         rating: 5
-//     },
-//     {
-//         title: 'First they killed my father',
-//         author: 'Loung Ung',
-//         pages: 238,
-//         rating: 4
-//     },
-//     {
-//         title: 'Pachinko',
-//         author: 'Min Jin Lee',
-//         pages: 490,
-//         rating: 5
-//     },
-//     {
-//         title: 'Silent Honor',
-//         author: 'Danielle Steel',
-//         pages: 353,
-//         rating: 5
-//     },
-//     {
-//         title: 'Tea Girl of Hummingbird Lane',
-//         author: 'Lisa See',
-//         pages: 384,
-//         rating: 5
-//     }
-// ]
+const library = [
+    {
+        title: 'The Kite Runner',
+        author: 'Khaled Hosseini',
+        pages: 371,
+        rating: 5,
+        read : 'read'
+    },
+    {
+        title: 'First they killed my father',
+        author: 'Loung Ung',
+        pages: 238,
+        rating: 4,
+        read : 'read'
+    },
+    {
+        title: 'Pachinko',
+        author: 'Min Jin Lee',
+        pages: 490,
+        rating: 5,
+        read : 'read'
+    },
+    {
+        title: 'Silent Honor',
+        author: 'Danielle Steel',
+        pages: 353,
+        rating: 5,
+        read : 'read'
 
-// function Book(title,author,pages,rating){
-//     this.title = title;
-//     this.author = author;
-//     this.pages = pages;
-//     this.rating = rating;
-// }
+    },
+    {
+        title: 'Tea Girl of Hummingbird Lane',
+        author: 'Lisa See',
+        pages: 384,
+        rating: 5,
+        read : 'read'
+    }
+]
 
-// function addBookToLibrary(book){
-//     library.push(book);
-// }
+let book_section = document.querySelector(".book-section");
+    book_section.innerHTML = "";
+    for(let i = 0; i < library.length; i++)
+    {
+        let book = library[i];
+        let bookEl = document.createElement("div");
+        bookEl.innerHTML = book.title;
+        book_section.appendChild(bookEl);
+    }
 
-// let new_card = document.createElement('div class = card');
+
+function Book(title,author,pages,rating,read){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.rating = rating;
+    this.read = read;
+}
+
+function display(){
+    let book_section = document.querySelector(".book-section");
+    book_section.innerHTML = "";
+    for(let i = 0; i < library.length; i++)
+    {
+        let book = library[i];
+        let bookEl = document.createElement("div");
+        bookEl.innerHTML = `<div class="card">
+        <div class="card-heading">${book.title}</div>
+        <div class="card-writer">${book.author}</div>
+        <div class="page">${book.pages} pages</div>
+        <div class="rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+        </div>
+        <div class="bottom-row">
+            <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
+            <div class="text">${book.read ? "Read":"Not read"}</div>
+            <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
+         </div>  
+    </div>`
+        book_section.appendChild(bookEl);
+    }
+}
+
+function addBookToLibrary(){
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let rating = document.getElementById('rating').value;
+    let read = document.getElementById('yes').checked;
+    let newbook = new Book(title,author,pages,rating,read);
+    library.push(newbook);
+    console.log(newbook);
+    display();
+}
 
 
 const add = document.getElementById('Add');
 const dialog = document.getElementById('dialog');
 const close = document.getElementById('close');
+const trash = document.querySelectorAll(".trash");
 
 add.addEventListener("click", ()=>{
     dialog.showModal();
@@ -56,31 +109,8 @@ add.addEventListener("click", ()=>{
 close.addEventListener("click", (event)=> {
     event.preventDefault();
     dialog.close();
-    let title = document.getElementById('title');
-    let author = document.getElementById('author');
-    let pages = document.getElementById('pages');
-    let rating = document.getElementById('rating');
-
-    let new_card = document.createElement('div class = card');
-    let card_heading = document.createElement('div class = card_heading');
-    let card_writer = document.createElement('div class = writer');
-    let page = document.createElement('div class = page');
-    let ratings = document.createElement('div class = rating');
-
-    card_heading.innerText = title.value;
-    card_writer.innerText = author.value;
-    page.innerText = pages.value+" pages";
-    ratings.innerText = rating.value;
-
-    new_card.appendChild(card_heading);
-    new_card.appendChild(card_writer);
-    new_card.appendChild(page);
-    new_card.appendChild(ratings);
-
-    let book_section = document.getElementsByClassName('book-section').classList;
-    book_section.add("card");
-    book_section.appendChild(new_card);
-
+    addBookToLibrary();
     
 });
+
 

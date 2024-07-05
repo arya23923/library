@@ -37,7 +37,7 @@ button {
     position: absolute;
     padding: 1%;
     margin-top: -7vh;
-    margin-left: 18vw;
+    margin-left: 15vw;
     width: 10vw;
     background-color: rgb(227, 152, 86);
     border-radius: 6px;
@@ -62,7 +62,7 @@ button {
 
 .book-section{
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(270px,450px));
     grid-gap: 5px;
     justify-content: center;
     align-items: center;
@@ -154,7 +154,7 @@ button {
 
 dialog[open]{
     opacity: 1;
-    height: 70vh;
+    height: 75vh;
     width: 50vw;
     display: flex;
     flex-direction: column;
