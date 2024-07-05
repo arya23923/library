@@ -43,7 +43,23 @@ let book_section = document.querySelector(".book-section");
     {
         let book = library[i];
         let bookEl = document.createElement("div");
-        bookEl.innerHTML = book.title;
+        bookEl.innerHTML = `<div class="card">
+        <div class="card-heading">${book.title}</div>
+        <div class="card-writer">${book.author}</div>
+        <div class="page">${book.pages} pages</div>
+        <div class="rating">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+        </div>
+        <div class="bottom-row">
+            <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
+            <div class="text">${book.read ? "Read":"Not read"}</div>
+            <div class="trash"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
+         </div>  
+    </div>`
         book_section.appendChild(bookEl);
     }
 
@@ -68,11 +84,11 @@ function display(){
         <div class="card-writer">${book.author}</div>
         <div class="page">${book.pages} pages</div>
         <div class="rating">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
         </div>
         <div class="bottom-row">
             <div class="book"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
@@ -101,6 +117,7 @@ const add = document.getElementById('Add');
 const dialog = document.getElementById('dialog');
 const close = document.getElementById('close');
 const trash = document.querySelectorAll(".trash");
+const to_read = document.querySelector(".book")
 
 add.addEventListener("click", ()=>{
     dialog.showModal();
@@ -112,5 +129,9 @@ close.addEventListener("click", (event)=> {
     addBookToLibrary();
     
 });
+
+trash.addEventListener("click", ()=> {
+
+})
 
 
