@@ -4,28 +4,28 @@ const library = [
         author: 'Khaled Hosseini',
         pages: 371,
         rating: 5,
-        read : 'read'
+        read: 'read'
     },
     {
         title: 'First they killed my father',
         author: 'Loung Ung',
         pages: 238,
         rating: 4,
-        read : 'read'
+        read: 'read'
     },
     {
         title: 'Pachinko',
         author: 'Min Jin Lee',
         pages: 490,
         rating: 5,
-        read : 'read'
+        read: 'read'
     },
     {
         title: 'Silent Honor',
         author: 'Danielle Steel',
         pages: 353,
         rating: 5,
-        read : 'read'
+        read: 'read'
 
     },
     {
@@ -33,13 +33,13 @@ const library = [
         author: 'Lisa See',
         pages: 384,
         rating: 5,
-        read : 'read'
+        read: 'read'
     }
 ]
 
 
 
-function Book(title,author,pages,rating,read){
+function Book(title, author, pages, rating, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -47,20 +47,12 @@ function Book(title,author,pages,rating,read){
     this.read = read;
 }
 
-Book.prototype.toggleRead = function() {
-    this.read = !this.read;
-}
 
-function toggleRead(index){
-    library[index].toggleRead();
-    display();
-}
 
-function display(){
+function display() {
     let book_section = document.querySelector(".book-section");
     book_section.innerHTML = "";
-    for(let i = 0; i < library.length; i++)
-    {
+    for (let i = 0; i < library.length; i++) {
         let book = library[i];
         let bookEl = document.createElement("div");
         bookEl.innerHTML = `<div class="card">
@@ -73,10 +65,9 @@ function display(){
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
-        </div>
         <div class="bottom-row">
             <div class="book" onclick = "toggleRead(${i})"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
-            <div class="text">${book.read ? "Read":"Not read"}</div>
+            <div class="text">${book.read ? "Read" : "Not read"}</div>
             <div class="trash" onclick = "removeBook(${i})"><img src="images/icons8-trash.svg" alt="" height="50px" width="30px"></div>
          </div>  
     </div>`
@@ -84,28 +75,31 @@ function display(){
     }
 }
 
-function addBookToLibrary(){
+function addBookToLibrary() {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let rating = document.getElementById('rating').value;
     let read = document.getElementById('yes').checked;
-    let newbook = new Book(title,author,pages,rating,read);
+    let newbook = new Book(title, author, pages, rating, read);
     library.push(newbook);
     console.log(newbook);
     display();
 }
 
-function removeBook(index){
-    console.log(index);
-    library.splice(index,1);
+function removeBook(index) {
+    library.splice(index, 1);
     display();
 }
 
-function toggleRead(index){
-    library[index].read = "not read";
-    display();
+function toggleRead(index) {
+    console.log(index);
+    library[index].read = "Not read";
+    const image_changer = document.querySelectorAll('.book');
+    image_changer.src = 'images/book.svg';
 }
+
+
 
 display();
 
@@ -113,23 +107,18 @@ const add = document.getElementById('Add');
 const dialog = document.getElementById('dialog');
 const close = document.getElementById('close');
 const trash = document.querySelectorAll(".trash");
-console.log(trash);
-const to_read = document.querySelectorAll(".book")
+const text = document.querySelector(".text");
 
-add.addEventListener("click", ()=>{
+add.addEventListener("click", () => {
     dialog.showModal();
 });
 
-close.addEventListener("click", (event)=> {
+close.addEventListener("click", (event) => {
     event.preventDefault();
     dialog.close();
     addBookToLibrary();
-    
-});
 
-// trash.forEach((element,index) =>{
-//     element.addEventListener("click",removeBook(index));
-// })
+});
 
 
 
