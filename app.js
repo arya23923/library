@@ -122,5 +122,8 @@ close.addEventListener("click", (event) => {
 
 });
 
-
+function closed(){
+    event.preventDefault();
+    dialog.close();
+}
 
