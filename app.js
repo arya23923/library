@@ -55,16 +55,15 @@ function display() {
     for (let i = 0; i < library.length; i++) {
         let book = library[i];
         let bookEl = document.createElement("div");
+        let ratingsEl = "";
+        for (let i = 0; i < book.rating; i++)
+            ratingsEl += "<span class=\"fa fa-star checked\"></span>";
         bookEl.innerHTML = `<div class="card">
         <div class="card-heading">${book.title}</div>
         <div class="card-writer">${book.author}</div>
         <div class="page">${book.pages} pages</div>
-        <div class="rating">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
+        <div class="rating">`+ ratingsEl + `</div>
+                
         <div class="bottom-row">
             <div class="book" onclick = "toggleRead(${i})"><img src="images/read.svg" id="book" alt="" height="50px" width="30px"></div>
             <div class="text">${book.read ? "Read" : "Not read"}</div>
@@ -97,6 +96,7 @@ function toggleRead(index) {
     library[index].read = "Not read";
     const image_changer = document.querySelectorAll('.book');
     image_changer.src = 'images/book.svg';
+    display();
 }
 
 
