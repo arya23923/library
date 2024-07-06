@@ -93,10 +93,12 @@ function removeBook(index) {
 
 function toggleRead(index) {
     console.log(index);
-    library[index].read = "Not read";
-    const image_changer = document.querySelectorAll('.book');
-    image_changer.src = 'images/book.svg';
+    library[index].read = !library[index].read;
+    // let change = this.getAttribute('class');
+    this.src ='images/book.svg';
+    console.log(this);
     display();
+    console.log(index);
 }
 
 
